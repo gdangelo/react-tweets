@@ -3,7 +3,10 @@ var express = require('express'),
     exphbs = require('express-handlebars'),
     http = require('http'),
     path = require('path'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    Twit = require('twit'),
+    config = require('./config'),
+    streamHandler = require('./utils/streamHandler');
 
 // Create an express instance and set a host and port variables
 var app = express();
@@ -16,6 +19,9 @@ app.set('view engine', 'handlebars');
 
 // Connect to the mongo database
 mongoose.connect('mongodb://localhost/react-tweets');
+
+// Create a new twitter instance
+var T = new Twit(config.twitter);
 
 // Index Route
 app.get('/', function (req, res) {
@@ -30,3 +36,7 @@ server.listen(port, host, function () {
 
 // Initialize socket.io
 var io = require('socket.io').listen(server);
+
+// Set a stream listener for tweets matching tracking keywords
+var stream = T.stream('statuses/filter', { track: 'React' });
+streamHandler(stream, io);

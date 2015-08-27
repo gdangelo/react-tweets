@@ -18,7 +18,7 @@ schema.static.getTweets = function (page, skip, callback) {
       start = (page * 10) + (skip * 1);
 
   // Query the db, using skip and limit to achieve page chunks
-  this.find({}, 'twid active author avatar body date screenname', {skip: start, limit: 10}).sort({date: 'desc'}).exec(function(err,docs)) {
+  this.find({}, 'twid active author avatar body date screenname', {skip: start, limit: 10}).sort({date: 'desc'}).exec(function(err,docs) {
 
     if(!err) {
       tweets = docs;
@@ -30,7 +30,7 @@ schema.static.getTweets = function (page, skip, callback) {
     // Pass them back to the specified callback
     callback(tweets);
 
-  };
+  });
 };
 
 // Return a Tweet model based upon the defined schema
