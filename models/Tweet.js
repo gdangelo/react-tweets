@@ -13,7 +13,7 @@ var schema = new Schema({
 });
 
 // Create a static method to return tweet data from the mongodb
-schema.static.getTweets = function (page, skip, callback) {
+schema.statics.getTweets = function (page, skip, callback) {
   var tweets = [],
       start = (page * 10) + (skip * 1);
 

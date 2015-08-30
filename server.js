@@ -5,6 +5,7 @@ var express = require('express'),
     path = require('path'),
     mongoose = require('mongoose'),
     Twit = require('twit'),
+    routes = require('./routes'),
     config = require('./config'),
     streamHandler = require('./utils/streamHandler');
 
@@ -23,10 +24,11 @@ mongoose.connect('mongodb://localhost/react-tweets');
 // Create a new twitter instance
 var T = new Twit(config.twitter);
 
-// Index Route
-app.get('/', function (req, res) {
-  res.render('home');
-});
+// Index Routes
+app.get('/', routes.index);
+
+// Page Route
+app.get('/page/:page/:skip', routes.page);
 
 // Start the server
 var server = http.createServer(app);
