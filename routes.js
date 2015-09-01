@@ -1,4 +1,7 @@
-var Tweet = require('./models/Tweet');
+var JSX = require('babel/register'),
+    React = require('react'),
+    Tweet = require('./models/Tweet'),
+    TweetsApp = React.createFactory(require('./components/TweetsApp.react'));
 
 module.exports = {
 
@@ -7,7 +10,9 @@ module.exports = {
       Tweet.getTweets(0, 0, function (tweets) {
 
         // Render React to a string, passing in the fetched tweets
-        var markup = 'Todo';
+        var markup = React.renderToString(
+          TweetsApp({tweets: tweets})
+        );
 
         // Render the main template
         res.render('home', {
