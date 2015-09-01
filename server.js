@@ -24,11 +24,14 @@ mongoose.connect('mongodb://localhost/react-tweets');
 // Create a new twitter instance
 var T = new Twit(config.twitter);
 
-// Index Routes
+// Index Route
 app.get('/', routes.index);
 
 // Page Route
 app.get('/page/:page/:skip', routes.page);
+
+// Set /public as our static content dir
+app.use("/", express.static(path.join(__dirname, "/public")));
 
 // Start the server
 var server = http.createServer(app);
@@ -40,5 +43,5 @@ server.listen(port, host, function () {
 var io = require('socket.io').listen(server);
 
 // Set a stream listener for tweets matching tracking keywords
-var stream = T.stream('statuses/filter', { track: 'React' });
+var stream = T.stream('statuses/filter', { track: 'javascript' });
 streamHandler(stream, io);
