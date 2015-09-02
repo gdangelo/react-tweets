@@ -1,0 +1,29 @@
+{
+  "name": "react-tweets",
+  "version": "0.0.0",
+  "description": "Real time Twitter stream with Node and React",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdangelo/react-tweets.git"
+  },
+  "keywords": [
+    "React",
+    "Node.js",
+    "Twitter",
+    "Isomorphic"
+  ],
+  "author": "Grégory D'Angelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gdangelo/react-tweets/issues"
+  },
+  "homepage": "https://github.com/gdangelo/react-tweets",
+  "dependencies": {
+    "express": "~4.13.3",
+    "express-handlebars": "~2.0.1"
+  }
+}
