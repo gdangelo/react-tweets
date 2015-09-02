@@ -27,3 +27,6 @@ var server = http.createServer(app);
 server.listen(port, host, function () {
   console.log('Express server listening at %s:%d, within %s environment.', host, port, app.get('env'));
 });
+
+// Initialize socket.io
+var io = require('socket.io').listen(server);
