@@ -16,3 +16,7 @@ Code repository for a Twitter streaming app build with Node and React
 6. Start the app: `npm start`
 7. View in browser at: `http://localhost:8080`
 8. Enjoy!
+
+## Demo
+
+See the demo application at : [http://react-tweets-gdangelo.herokuapp.com/](http://react-tweets-gdangelo.herokuapp.com/)
